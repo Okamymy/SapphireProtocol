@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg76yxe10a57w"]
+
+[ext_resource type="Script" uid="uid://c2x75mqlgiowb" path="res://scenes/TD/attack_towe.gd" id="1_t6i22"]
+[ext_resource type="PackedScene" uid="uid://djw4kq7sj141o" path="res://scenes/TD/bullet.tscn" id="2_jvt1d"]
+[ext_resource type="Texture2D" uid="uid://bron1yn7n82au" path="res://material/TD/sprites/tower.png" id="2_ne415"]
+
+[node name="AttackTowe" type="Node2D"]
+script = ExtResource("1_t6i22")
+bullet_instance = ExtResource("2_jvt1d")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(60.5, 91.3355)
+scale = Vector2(0.383871, 0.383871)
+texture = ExtResource("2_ne415")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(112, 42)

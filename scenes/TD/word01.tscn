@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg108qhttrg41"]
+
+[ext_resource type="Texture2D" uid="uid://gwjbrynqdn3e" path="res://material/TD/sprites/grid.png" id="1_4cc0i"]
+[ext_resource type="PackedScene" uid="uid://cg76yxe10a57w" path="res://scenes/TD/AttackTowe.tscn" id="2_kflmo"]
+[ext_resource type="PackedScene" uid="uid://5gn83odk4b1t" path="res://material/TD/UI/hud.tscn" id="3_honol"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Grid" type="Sprite2D" parent="."]
+position = Vector2(561.238, 370)
+scale = Vector2(0.569196, 0.569196)
+texture = ExtResource("1_4cc0i")
+
+[node name="AttackTowe" parent="." instance=ExtResource("2_kflmo")]
+position = Vector2(54.2377, 75)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_honol")]

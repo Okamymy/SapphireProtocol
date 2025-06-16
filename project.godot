@@ -11,12 +11,23 @@ config_version=5
 [application]
 
 config/name="SapphireProtocol"
+run/main_scene="uid://dg108qhttrg41"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+TdSystemBytes="*res://material/TD/systems/TDSystemBytes.gd"
 
 [dotnet]
 
 project/assembly_name="SapphireProtocol"
+
+[layer_names]
+
+2d_physics/layer_1="objects"
+2d_physics/layer_2="towers"
+2d_physics/layer_3="enemys"
 
 [rendering]
 
