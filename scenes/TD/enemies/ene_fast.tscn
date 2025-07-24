@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8cpryrp0uyom"]
+
+[ext_resource type="Script" uid="uid://b4hok6cdnyo2y" path="res://scenes/TD/enemies/enemie.gd" id="1_i6kwn"]
+[ext_resource type="PackedScene" uid="uid://deitq8g4qhoth" path="res://scenes/TD/objects/ram.tscn" id="2_5op1m"]
+[ext_resource type="Texture2D" uid="uid://cyeu4spqkeref" path="res://material/TD/sprites/enemies/Enemy01.png" id="3_dcibh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfs0i"]
+size = Vector2(14.2875, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fqq2"]
+size = Vector2(5.99117, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufimw"]
+
+[node name="enemie" type="CharacterBody2D"]
+scale = Vector2(3.965, 3.965)
+script = ExtResource("1_i6kwn")
+maxHealth = 88
+speed = 85.0
+dalay = 1.0
+qtr_free = 32
+RAM_Scene = ExtResource("2_5op1m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_dcibh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.85624, 7.5)
+shape = SubResource("RectangleShape2D_pfs0i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="collitionOut" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collitionOut"]
+position = Vector2(-9.04855, 0.504413)
+shape = SubResource("RectangleShape2D_3fqq2")
+debug_color = Color(0.998664, 0, 0.135999, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="collitionIn" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collitionIn"]
+shape = SubResource("RectangleShape2D_ufimw")
+debug_color = Color(0.214608, 0.639577, 1.34766e-06, 0.42)
+
+[connection signal="area_entered" from="collitionOut" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="collitionOut" to="." method="_on_area_2d_area_exited"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg76yxe10a57w"]
+
+[ext_resource type="Script" uid="uid://c2x75mqlgiowb" path="res://scenes/TD/attack_towe.gd" id="1_ne415"]
+[ext_resource type="PackedScene" uid="uid://djw4kq7sj141o" path="res://scenes/TD/bullet.tscn" id="2_jvt1d"]
+[ext_resource type="Texture2D" uid="uid://bron1yn7n82au" path="res://material/TD/sprites/tower.png" id="2_ne415"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvt1d"]
+size = Vector2(72, 113)
+
+[node name="AttackTowe" type="Node2D"]
+script = ExtResource("1_ne415")
+damagePerShot = null
+recoil = null
+bullet_instance = ExtResource("2_jvt1d")
+maxHealt = 32
+gridPosition = null
+megabytesSize = null
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.500002, -14)
+scale = Vector2(0.3, 0.277778)
+texture = ExtResource("2_ne415")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(35, -48)
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_jvt1d")
+debug_color = Color(1.8771e-06, 0.649197, 0.153478, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(1000, -1)

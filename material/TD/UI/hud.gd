@@ -1,8 +1,20 @@
+class_name Hud
 extends Control
-@onready var bytes_qty: Label = $HBoxContainer/bytes_qty
+@onready var bytes_qty: Label = $MBPanel/MBgrit/bytes_qty
 
 func _ready() -> void:
-	TdSystemBytes.UpdateBytes.connect(updateBytes)
+	TdSystemMb.UpdateBytes.connect(updateMB)
+	TdSystemGameManager.hud=self
+	$Button.visible=false
 
-func updateBytes(byte:int):
+	
+func updateMB(byte:int):
 	bytes_qty.text = str(byte)
+
+
+func _on_button_button_down() -> void:
+	TdSystemGameManager.cancelTower()
+
+
+func showButtonCancel(value:bool):
+	$Button.visible=value

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvcuemhgetw8p"]
+
+[ext_resource type="Script" uid="uid://drxocwt6krqtw" path="res://scenes/TD/cursor_tower.gd" id="1_dbbha"]
+
+[node name="cursor" type="Node2D"]
+script = ExtResource("1_dbbha")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.54902)

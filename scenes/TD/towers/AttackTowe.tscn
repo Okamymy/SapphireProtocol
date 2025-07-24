@@ -1,0 +1,148 @@
+[gd_scene load_steps=22 format=3 uid="uid://cg76yxe10a57w"]
+
+[ext_resource type="Script" uid="uid://c2x75mqlgiowb" path="res://scenes/TD/towers/attack_towe.gd" id="1_ne415"]
+[ext_resource type="PackedScene" uid="uid://djw4kq7sj141o" path="res://scenes/TD/objects/bullet.tscn" id="2_jvt1d"]
+[ext_resource type="Texture2D" uid="uid://cj68oy8d8ooou" path="res://material/TD/sprites/towers/TR_0001/idle/1.png" id="3_3p7bw"]
+[ext_resource type="Texture2D" uid="uid://cbbo5e2bghrly" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-0.png" id="3_xll1l"]
+[ext_resource type="Texture2D" uid="uid://dukoh7dpw7rwn" path="res://material/TD/sprites/towers/TR_0001/idle/2.png" id="4_0pgo6"]
+[ext_resource type="Texture2D" uid="uid://8nmv4n51wh1w" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-1.png" id="4_u5wy1"]
+[ext_resource type="Texture2D" uid="uid://1ptqh657y2eq" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-2.png" id="5_3p7bw"]
+[ext_resource type="Texture2D" uid="uid://cutf6l56253to" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-3.png" id="6_0pgo6"]
+[ext_resource type="Texture2D" uid="uid://bjcabanox1t7p" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-4.png" id="7_j0u2m"]
+[ext_resource type="Texture2D" uid="uid://cg14w8fvss421" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-5.png" id="8_c1ywu"]
+[ext_resource type="Texture2D" uid="uid://c8glyhykjksxu" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-6.png" id="9_4vdh8"]
+[ext_resource type="Texture2D" uid="uid://bv46iuvmhle55" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-7.png" id="10_pp8gr"]
+[ext_resource type="Texture2D" uid="uid://fmk0jhft4i6" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-8.png" id="11_p8smh"]
+[ext_resource type="Texture2D" uid="uid://bofbr8lv75s25" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-9.png" id="12_gc6e4"]
+[ext_resource type="Texture2D" uid="uid://d15l5a23japtb" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-10.png" id="13_xlnw3"]
+[ext_resource type="Texture2D" uid="uid://basjbfucxgwdm" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-11.png" id="14_1h4fi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8n3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3p7bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0pgo6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xll1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u5wy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3p7bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0pgo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j0u2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c1ywu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4vdh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pp8gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_p8smh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_gc6e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xlnw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1h4fi")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvt1d"]
+size = Vector2(114, 59)
+
+[sub_resource type="Animation" id="Animation_3p7bw"]
+resource_name = "towe_atack"
+
+[sub_resource type="Animation" id="Animation_0pgo6"]
+resource_name = "towershot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawner_bullet"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0u2m"]
+_data = {
+&"towe_atack": SubResource("Animation_3p7bw"),
+&"towershot": SubResource("Animation_0pgo6")
+}
+
+[node name="AttackTowe" type="Node2D"]
+script = ExtResource("1_ne415")
+bullet_instance = ExtResource("2_jvt1d")
+maxHealt = 32
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(1000, -1)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.4961, -7.50391)
+scale = Vector2(1.22992, 1.22992)
+sprite_frames = SubResource("SpriteFrames_w8n3l")
+animation = &"shot"
+frame_progress = 0.342962
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(60, -14)
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(4, -5.5)
+shape = SubResource("RectangleShape2D_jvt1d")
+debug_color = Color(1.8771e-06, 0.649197, 0.153478, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j0u2m")
+}

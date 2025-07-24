@@ -1,20 +1,68 @@
-[gd_scene format=3 uid="uid://bcjnilqijomll"]
+[gd_scene load_steps=5 format=3 uid="uid://bcjnilqijomll"]
+
+[ext_resource type="Script" uid="uid://dt2lgcklvbn83" path="res://material/TD/UI/tower_card.gd" id="1_107mw"]
+[ext_resource type="Texture2D" uid="uid://5t6qhg4hrvvu" path="res://icon.svg" id="2_2moc0"]
+[ext_resource type="PackedScene" uid="uid://cg76yxe10a57w" path="res://scenes/TD/towers/AttackTowe.tscn" id="3_7rwse"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h5ex"]
+bg_color = Color(0.078112, 3.14053e-05, 0.298551, 0.294118)
 
 [node name="Panel" type="Panel"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = -1
+anchor_right = 0.087
+anchor_bottom = 0.154
+offset_right = -0.224007
+offset_bottom = 0.207993
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_107mw")
+textureCard = ExtResource("2_2moc0")
+tower = ExtResource("3_7rwse")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 161.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.384, 0.355)
+texture = ExtResource("2_2moc0")
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "15mb"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -3.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.04, 1.16)
+mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_6h5ex")
+fill_mode = 3
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
