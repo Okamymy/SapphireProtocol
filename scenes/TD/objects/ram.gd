@@ -9,7 +9,7 @@ func _ready() -> void:
 	timer.wait_time = 15.0
 	timer.one_shot = true
 	timer.start()
-	timer.timeout.connect(self._on_timer_timeout)
+	timer.timeout.connect(_on_timer_timeout)
 	
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Input.is_action_just_released("click_izquierdo"):

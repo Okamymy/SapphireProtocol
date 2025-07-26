@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2x75mqlgiowb" path="res://scenes/TD/towers/attack_towe.gd" id="1_uffdv"]
 [ext_resource type="Texture2D" uid="uid://cj68oy8d8ooou" path="res://material/TD/sprites/towers/TR_0001/idle/1.png" id="2_7wqtb"]
-[ext_resource type="PackedScene" uid="uid://djw4kq7sj141o" path="res://scenes/TD/objects/bullet.tscn" id="2_vkbga"]
+[ext_resource type="PackedScene" uid="uid://djw4kq7sj141o" path="res://scenes/TD/objects/shortRangeBullet.tscn" id="2_vkbga"]
 [ext_resource type="Texture2D" uid="uid://dukoh7dpw7rwn" path="res://material/TD/sprites/towers/TR_0001/idle/2.png" id="3_vkbga"]
 [ext_resource type="Texture2D" uid="uid://cbbo5e2bghrly" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-0.png" id="4_2gpe4"]
 [ext_resource type="Texture2D" uid="uid://8nmv4n51wh1w" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-1.png" id="5_wge8y"]
