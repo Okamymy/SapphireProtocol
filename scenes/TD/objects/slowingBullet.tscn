@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://djg1t5veqjge0"]
+
+[ext_resource type="Script" uid="uid://bowmli5qqe3dx" path="res://scenes/TD/objects/bullet.gd" id="1_8f2h3"]
+[ext_resource type="Texture2D" uid="uid://5t6qhg4hrvvu" path="res://icon.svg" id="2_wamru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bfpb"]
+size = Vector2(120.471, 120.471)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_8f2h3")
+effect = "slowing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.199219, 0.200695)
+shape = SubResource("RectangleShape2D_6bfpb")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, -4.76837e-07)
+scale = Vector2(0.199219, 0.200695)
+texture = ExtResource("2_wamru")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1.2, 1.2)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

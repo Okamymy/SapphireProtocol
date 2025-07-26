@@ -69,8 +69,10 @@ func attackTower():
 		currentAttackTower.getDamage(damage)
 		delayPerDamge.start()
 
-func getDamage(qtyDamage:int):
-
+func getDamage(qtyDamage:int, effect:String=''):
+	match effect:
+		'slowing':
+			speed=20
 	currentHealth-= qtyDamage
 	if (currentHealth <= 0):
 		#instancia una ram

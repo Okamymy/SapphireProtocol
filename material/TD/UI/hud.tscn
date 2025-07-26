@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://5gn83odk4b1t"]
+[gd_scene load_steps=6 format=3 uid="uid://5gn83odk4b1t"]
 
 [ext_resource type="Script" uid="uid://dn5uo6o8jgmm8" path="res://material/TD/UI/hud.gd" id="1_65njx"]
 [ext_resource type="PackedScene" uid="uid://bcjnilqijomll" path="res://material/TD/UI/towerCard.tscn" id="2_t2rcw"]
+[ext_resource type="PackedScene" uid="uid://dy2hikoyui7yi" path="res://scenes/TD/towers/DefenceTower.tscn" id="3_dktl5"]
+[ext_resource type="PackedScene" uid="uid://bll1ubb500jb6" path="res://scenes/TD/towers/MineTower.tscn" id="4_dp6t4"]
+[ext_resource type="PackedScene" uid="uid://p7gogefqvhbd" path="res://scenes/TD/towers/slowingTower.tscn" id="5_0vqec"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -84,7 +87,20 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel2" parent="Panel/HBoxContainer" instance=ExtResource("2_t2rcw")]
+layout_mode = 2
+
 [node name="Panel" parent="Panel/HBoxContainer" instance=ExtResource("2_t2rcw")]
 layout_mode = 2
+priceMB = 40
+tower = ExtResource("3_dktl5")
+
+[node name="Panel3" parent="Panel/HBoxContainer" instance=ExtResource("2_t2rcw")]
+layout_mode = 2
+tower = ExtResource("4_dp6t4")
+
+[node name="Panel4" parent="Panel/HBoxContainer" instance=ExtResource("2_t2rcw")]
+layout_mode = 2
+tower = ExtResource("5_0vqec")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

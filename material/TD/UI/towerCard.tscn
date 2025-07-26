@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dt2lgcklvbn83" path="res://material/TD/UI/tower_card.gd" id="1_107mw"]
 [ext_resource type="Texture2D" uid="uid://5t6qhg4hrvvu" path="res://icon.svg" id="2_2moc0"]
-[ext_resource type="PackedScene" uid="uid://cg76yxe10a57w" path="res://scenes/TD/towers/AttackTowe.tscn" id="3_7rwse"]
+[ext_resource type="PackedScene" uid="uid://cg76yxe10a57w" path="res://scenes/TD/towers/AttackTower.tscn" id="3_7rwse"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h5ex"]
 bg_color = Color(0.078112, 3.14053e-05, 0.298551, 0.294118)
