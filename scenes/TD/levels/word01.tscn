@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dg108qhttrg41"]
 
-[ext_resource type="Script" uid="uid://cxqct23kya5u4" path="res://scenes/TD/word_01.gd" id="1_mhdlx"]
+[ext_resource type="Script" uid="uid://cxqct23kya5u4" path="res://scenes/TD/levels/word_01.gd" id="1_mhdlx"]
 [ext_resource type="Texture2D" uid="uid://d2a7k4ypiddia" path="res://material/TD/sprites/MapCon01.png" id="2_i5jl0"]
 [ext_resource type="PackedScene" uid="uid://5gn83odk4b1t" path="res://material/TD/UI/hud.tscn" id="3_honol"]
 [ext_resource type="PackedScene" uid="uid://cvcuemhgetw8p" path="res://scenes/TD/cursorTower.tscn" id="5_i5jl0"]

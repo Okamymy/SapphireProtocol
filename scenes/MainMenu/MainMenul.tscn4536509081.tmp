@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://bksuus7eul04h"]
+
+[ext_resource type="Script" uid="uid://7ynw50lwguhw" path="res://scenes/MainMenu/main_menul.gd" id="1_qd235"]
+[ext_resource type="VideoStream" uid="uid://clqw08a38wiho" path="res://material/MainMenu/background/01/01.ogv" id="2_qd235"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qd235")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 1918.0
+offset_bottom = 1082.0
+stream = ExtResource("2_qd235")
+autoplay = true
+loop = true
+
+[node name="start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.4
+anchor_right = 0.521
+anchor_bottom = 0.448
+offset_left = 1.04004
+offset_top = -0.200012
+offset_right = -0.192017
+offset_bottom = -0.304016
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.647
+anchor_right = 0.515
+anchor_bottom = 0.694
+offset_left = -1.56799
+offset_top = -0.256012
+offset_right = -0.280029
+offset_bottom = 0.287994
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[node name="options" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.471
+anchor_top = 0.554
+anchor_right = 0.53
+anchor_bottom = 0.602
+offset_left = 0.407959
+offset_top = 0.00799561
+offset_right = -0.560059
+offset_bottom = -0.0960388
+text = "options"
+
+[node name="achievements" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.477
+anchor_top = 0.475
+anchor_right = 0.529
+anchor_bottom = 0.523
+offset_left = -0.504028
+offset_top = 0.199982
+offset_right = -0.408081
+offset_bottom = 0.0960083
+grow_horizontal = 2
+grow_vertical = 2
+text = "Logros"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="achievements" to="." method="_on_achievements_pressed"]
