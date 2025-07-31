@@ -4,9 +4,12 @@ extends BaseWord
 @onready var cells = $cells
 @onready var cursor = $cursor
 @onready var towers: Node2D = $towers
+@onready var bg_animation: AnimationPlayer = $bgAnimation
 
 
 func _ready():
+	bg_animation.play("new_animation")
+	
 	TdSystemGameManager.current_word = self
 	TdSystemGameManager.cursorTower = $cursor
 	makeGrid()

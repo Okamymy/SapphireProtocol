@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SapphireProtocol"
-run/main_scene="uid://dg108qhttrg41"
+run/main_scene="uid://bksuus7eul04h"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 TdSystemMb="*res://material/TD/systems/TDSystemMB.gd"
 TdSystemGameManager="*res://material/TD/systems/TDSystemGameManager.gd"
+ConctorDB="*res://scenes/connector/conctor.tscn"
 
 [dotnet]
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://3y2thm6vy0eu"]
+
+[ext_resource type="Script" uid="uid://b2rkyh83w0aw5" path="res://scenes/connector/conctor.gd" id="1_tatbp"]
+
+[node name="Conctor" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tatbp")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
