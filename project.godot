@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 TdSystemMb="*res://material/TD/systems/TDSystemMB.gd"
 TdSystemGameManager="*res://material/TD/systems/TDSystemGameManager.gd"
 ConctorDB="*res://scenes/connector/conctor.tscn"
+DataUserSystem="*res://material/TD/systems/DataUserSystem.gd"
 
 [dotnet]
 

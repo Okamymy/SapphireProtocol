@@ -1,0 +1,134 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccn10t6tpyib"]
+
+[ext_resource type="Script" uid="uid://cxqct23kya5u4" path="res://scenes/TD/levels/word_01.gd" id="1_jst4d"]
+[ext_resource type="Texture2D" uid="uid://bplolt7addgp3" path="res://scenes/TD/levels/level0/bg.png" id="2_p4tb3"]
+[ext_resource type="Texture2D" uid="uid://d2a7k4ypiddia" path="res://material/TD/sprites/MapCon01.png" id="3_xc1ag"]
+[ext_resource type="PackedScene" uid="uid://5gn83odk4b1t" path="res://material/TD/UI/hud.tscn" id="4_3junv"]
+[ext_resource type="PackedScene" uid="uid://cvcuemhgetw8p" path="res://scenes/TD/cursorTower.tscn" id="5_15meq"]
+[ext_resource type="Script" uid="uid://c3hcbsp748scq" path="res://material/TD/scripts/gameOver.gd" id="6_ohyi5"]
+[ext_resource type="PackedScene" uid="uid://b8cpryrp0uyom" path="res://scenes/TD/enemies/ene_fast.tscn" id="7_lodxj"]
+[ext_resource type="PackedScene" uid="uid://d1knla2jxxixu" path="res://scenes/TD/enemies/ene_heavy.tscn" id="8_y1v6b"]
+[ext_resource type="PackedScene" uid="uid://d3cgpxrbodn1g" path="res://scenes/TD/enemies/ene_light.tscn" id="9_40ykj"]
+[ext_resource type="PackedScene" uid="uid://1675kbp4lsoi" path="res://scenes/TD/enemies/ene_medium.tscn" id="10_hrofl"]
+
+[sub_resource type="Animation" id="Animation_p4tb3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(549, 335)]
+}
+
+[sub_resource type="Animation" id="Animation_jst4d"]
+resource_name = "new_animation"
+length = 1.056
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.166667, 0.3, 0.433333, 0.566667, 0.69, 0.823333, 0.933333, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(549, 335), Vector2(554.62, 340.95), Vector2(549, 335), Vector2(554.62, 340.95), Vector2(549, 335), Vector2(554.62, 340.95), Vector2(549, 335), Vector2(554.62, 340.95), Vector2(549, 335)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xc1ag"]
+_data = {
+&"RESET": SubResource("Animation_p4tb3"),
+&"new_animation": SubResource("Animation_jst4d")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhdlx"]
+size = Vector2(120.5, 639.5)
+
+[node name="word1" type="Node2D" node_paths=PackedStringArray("lineNode")]
+script = ExtResource("1_jst4d")
+qtyEnemiesPerHorde = Array[int]([2, 2, 4, 5, 2])
+timePerHorde = Array[float]([2.7, 4.0, 2.0, 3.0, 2.0])
+lineNode = NodePath("lines")
+
+[node name="bgAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xc1ag")
+}
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(549, 335)
+texture = ExtResource("2_p4tb3")
+
+[node name="Grid" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.792157)
+position = Vector2(574, 372)
+scale = Vector2(1.81073, 1.81073)
+texture = ExtResource("3_xc1ag")
+
+[node name="cells" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("4_3junv")]
+anchor_left = 0.109
+anchor_top = 0.0
+anchor_bottom = 0.099
+offset_left = 0.431992
+offset_top = -4.0
+offset_right = -2.30408
+offset_bottom = -0.152008
+metadata/_edit_use_anchors_ = true
+
+[node name="towers" type="Node2D" parent="."]
+
+[node name="cursor" parent="." instance=ExtResource("5_15meq")]
+
+[node name="lines" type="Node2D" parent="."]
+position = Vector2(83, 0)
+
+[node name="Marker2D" type="Marker2D" parent="lines"]
+position = Vector2(1110, 551)
+
+[node name="Marker2D2" type="Marker2D" parent="lines"]
+position = Vector2(1113, 428)
+
+[node name="Marker2D3" type="Marker2D" parent="lines"]
+position = Vector2(1113, 307)
+
+[node name="Marker2D4" type="Marker2D" parent="lines"]
+position = Vector2(1113, 180)
+
+[node name="GameOverArea" type="Area2D" parent="."]
+position = Vector2(-139, 292)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("6_ohyi5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverArea"]
+position = Vector2(79, 26)
+shape = SubResource("RectangleShape2D_mhdlx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 322)
+
+[node name="enemie2" parent="." instance=ExtResource("7_lodxj")]
+position = Vector2(1008, 238)
+
+[node name="enemie" parent="." instance=ExtResource("8_y1v6b")]
+position = Vector2(1015, 369)
+
+[node name="enemie3" parent="." instance=ExtResource("9_40ykj")]
+position = Vector2(963, 414)
+
+[node name="enemie4" parent="." instance=ExtResource("10_hrofl")]
+position = Vector2(895, 294)
+
+[connection signal="area_entered" from="GameOverArea" to="GameOverArea" method="_on_area_entered"]

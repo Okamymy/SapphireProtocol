@@ -21,6 +21,18 @@ autoplay = true
 loop = true
 buffering_msec = 10
 
+[node name="UserNameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="MenuMain" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -40,13 +52,13 @@ text = "Play"
 layout_mode = 2
 text = "store"
 
-[node name="statistics" type="Button" parent="MenuMain"]
+[node name="scoreBoard" type="Button" parent="MenuMain"]
 layout_mode = 2
-text = "Statistics"
+text = "Scoreboard"
 
-[node name="Achievements" type="Button" parent="MenuMain"]
+[node name="userData" type="Button" parent="MenuMain"]
 layout_mode = 2
-text = "Achievements"
+text = "Player info"
 
 [node name="settings" type="Button" parent="MenuMain"]
 layout_mode = 2
@@ -128,7 +140,7 @@ grow_vertical = 2
 max_value = 1.0
 step = 0.01
 
-[node name="PanelAchievements" type="Panel" parent="."]
+[node name="PanelStatistics" type="Panel" parent="."]
 visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
@@ -144,13 +156,89 @@ offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelStore" type="Panel" parent="."]
+[node name="PanelScoreBoard" type="Panel" parent="."]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -222.0
+offset_right = 150.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PanelStatistics" type="Panel" parent="."]
+[node name="Label" type="Label" parent="PanelScoreBoard"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_right = 44.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Scoreboard"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelScoreBoard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -173.0
+offset_right = 152.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelScoreBoard/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelScoreBoard/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "          Names"
+
+[node name="ScoreboardTextNames" type="RichTextLabel" parent="PanelScoreBoard/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelScoreBoard/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelScoreBoard/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "              Score"
+
+[node name="ScoreboardTextScores" type="RichTextLabel" parent="PanelScoreBoard/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="BackScoreBoard" type="Button" parent="PanelScoreBoard"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -53.0
+offset_right = 23.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="PanelUserData" type="Panel" parent="."]
 visible = false
 custom_minimum_size = Vector2(400, 520)
 layout_mode = 1
@@ -166,7 +254,7 @@ offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="PanelStatistics"]
+[node name="Label" type="Label" parent="PanelUserData"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -175,9 +263,24 @@ offset_left = -54.5
 offset_right = 54.5
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "Achievements"
+text = "Data of user"
 
-[node name="BackStatistics" type="Button" parent="PanelStatistics"]
+[node name="DataPanelUserData" type="RichTextLabel" parent="PanelUserData"]
+custom_minimum_size = Vector2(230, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackPanelUserData" type="Button" parent="PanelUserData"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -207,53 +310,77 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EnterUser"]
+[node name="RegistrerUser" type="MarginContainer" parent="EnterUser"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -89.0
+offset_top = -27.5
+offset_right = 89.0
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="EnterUser/HBoxContainer"]
-layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EnterUser/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="EnterUser/RegistrerUser"]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="EnterUser/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="OptionButtonUser" type="OptionButton" parent="EnterUser/RegistrerUser/VBoxContainer2"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="EnterUser/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Crear usuario"
-
-[node name="MarginContainer2" type="MarginContainer" parent="EnterUser/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="EnterUser/HBoxContainer/MarginContainer2"]
-layout_mode = 2
-
-[node name="OptionButton" type="OptionButton" parent="EnterUser/HBoxContainer/MarginContainer2/VBoxContainer2"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="EnterUser/HBoxContainer/MarginContainer2/VBoxContainer2"]
+[node name="ButtonSelectUser" type="Button" parent="EnterUser/RegistrerUser/VBoxContainer2"]
 layout_mode = 2
 text = "seleccionar usuario"
 
+[node name="GoToLogin" type="Button" parent="EnterUser/RegistrerUser/VBoxContainer2"]
+layout_mode = 2
+text = "I don't have acount"
+
+[node name="LoginUser" type="MarginContainer" parent="EnterUser"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -33.0
+offset_right = 67.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnterUser/LoginUser"]
+layout_mode = 2
+
+[node name="registerUserText" type="LineEdit" parent="EnterUser/LoginUser/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonRegisterUser" type="Button" parent="EnterUser/LoginUser/VBoxContainer"]
+layout_mode = 2
+text = "Crear usuario"
+
+[node name="GoToRegister" type="Button" parent="EnterUser/LoginUser/VBoxContainer"]
+layout_mode = 2
+text = "I have acount"
+
 [connection signal="pressed" from="MenuMain/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MenuMain/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="MenuMain/scoreBoard" to="." method="_on_score_board_pressed"]
+[connection signal="pressed" from="MenuMain/userData" to="." method="_on_user_data_pressed"]
 [connection signal="pressed" from="MenuMain/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MenuMain/exit" to="." method="_on_exit_pressed"]
 [connection signal="button_up" from="PanelSettings/BackSettings" to="." method="_on_back_settings_button_up"]
 [connection signal="value_changed" from="PanelSettings/HScrollBar" to="." method="_on_h_scroll_bar_value_changed"]
+[connection signal="pressed" from="PanelScoreBoard/BackScoreBoard" to="." method="_on_back_score_board_pressed"]
+[connection signal="pressed" from="PanelUserData/BackPanelUserData" to="." method="_on_back_panel_user_data_pressed"]
+[connection signal="pressed" from="EnterUser/RegistrerUser/VBoxContainer2/ButtonSelectUser" to="." method="_on_button_select_user_pressed"]
+[connection signal="pressed" from="EnterUser/RegistrerUser/VBoxContainer2/GoToLogin" to="." method="_on_go_to_login_pressed"]
+[connection signal="pressed" from="EnterUser/LoginUser/VBoxContainer/ButtonRegisterUser" to="." method="_on_button_register_user_pressed"]
+[connection signal="pressed" from="EnterUser/LoginUser/VBoxContainer/GoToRegister" to="." method="_on_go_to_register_pressed"]

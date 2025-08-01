@@ -1,0 +1,273 @@
+[gd_scene load_steps=3 format=3 uid="uid://bksuus7eul04h"]
+
+[ext_resource type="Script" uid="uid://7ynw50lwguhw" path="res://scenes/MainMenu/main_menul.gd" id="1_qd235"]
+[ext_resource type="VideoStream" uid="uid://dyxpmwtrd7baw" path="res://material/MainMenu/background/01/test.ogv" id="2_qd235"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qd235")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("2_qd235")
+autoplay = true
+loop = true
+buffering_msec = 10
+
+[node name="UserNameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MenuMain" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.152
+anchor_bottom = 0.416
+offset_left = 66.0
+offset_top = 0.00399017
+offset_right = 183.0
+offset_bottom = -0.0679932
+grow_vertical = 2
+
+[node name="play" type="Button" parent="MenuMain"]
+layout_mode = 2
+text = "Play"
+
+[node name="store" type="Button" parent="MenuMain"]
+layout_mode = 2
+text = "store"
+
+[node name="statistics" type="Button" parent="MenuMain"]
+layout_mode = 2
+text = "Statistics"
+
+[node name="Achievements" type="Button" parent="MenuMain"]
+layout_mode = 2
+text = "Achievements"
+
+[node name="settings" type="Button" parent="MenuMain"]
+layout_mode = 2
+text = "settings"
+
+[node name="exit" type="Button" parent="MenuMain"]
+layout_mode = 2
+text = "Exit"
+
+[node name="PanelSettings" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="PanelSettings"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_right = 31.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Settings"
+
+[node name="volume" type="Label" parent="PanelSettings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.251
+anchor_right = 0.5
+anchor_bottom = 0.251
+offset_left = -31.0
+offset_top = 5.8
+offset_right = 31.0
+offset_bottom = 28.8
+grow_horizontal = 2
+text = "Volume"
+
+[node name="BackSettings" type="Button" parent="PanelSettings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.95
+anchor_right = 0.5
+anchor_bottom = 0.95
+offset_left = -22.5
+offset_top = -31.0
+offset_right = 22.5
+offset_bottom = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="HScrollBar" type="HScrollBar" parent="PanelSettings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.502
+anchor_top = 0.565
+anchor_right = 0.502
+anchor_bottom = 0.565
+offset_left = -92.6
+offset_top = -4.0
+offset_right = 92.4
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+
+[node name="PanelAchievements" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelStore" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelStatistics" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 520)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -260.0
+offset_right = 200.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PanelStatistics"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Achievements"
+
+[node name="BackStatistics" type="Button" parent="PanelStatistics"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -49.0
+offset_right = 23.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="PanelUser" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EnterUser" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EnterUser"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EnterUser/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnterUser/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="registerUserText" type="LineEdit" parent="EnterUser/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonRegisterUser" type="Button" parent="EnterUser/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Crear usuario"
+
+[node name="MarginContainer2" type="MarginContainer" parent="EnterUser/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="EnterUser/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="OptionButtonUser" type="OptionButton" parent="EnterUser/HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ButtonSelectUser" type="Button" parent="EnterUser/HBoxContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+text = "seleccionar usuario"
+
+[connection signal="pressed" from="MenuMain/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuMain/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="MenuMain/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuMain/exit" to="." method="_on_exit_pressed"]
+[connection signal="button_up" from="PanelSettings/BackSettings" to="." method="_on_back_settings_button_up"]
+[connection signal="value_changed" from="PanelSettings/HScrollBar" to="." method="_on_h_scroll_bar_value_changed"]
+[connection signal="pressed" from="EnterUser/HBoxContainer/MarginContainer/VBoxContainer/ButtonRegisterUser" to="." method="_on_button_register_user_pressed"]
+[connection signal="pressed" from="EnterUser/HBoxContainer/MarginContainer2/VBoxContainer2/ButtonSelectUser" to="." method="_on_button_select_user_pressed"]

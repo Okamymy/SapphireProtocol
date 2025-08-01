@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccn10t6tpyib"]
+[gd_scene load_steps=12 format=3 uid="uid://ccn10t6tpyib"]
 
 [ext_resource type="Script" uid="uid://cxqct23kya5u4" path="res://scenes/TD/levels/word_01.gd" id="1_jst4d"]
 [ext_resource type="Texture2D" uid="uid://bplolt7addgp3" path="res://scenes/TD/levels/level0/bg.png" id="2_p4tb3"]
@@ -6,10 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5gn83odk4b1t" path="res://material/TD/UI/hud.tscn" id="4_3junv"]
 [ext_resource type="PackedScene" uid="uid://cvcuemhgetw8p" path="res://scenes/TD/cursorTower.tscn" id="5_15meq"]
 [ext_resource type="Script" uid="uid://c3hcbsp748scq" path="res://material/TD/scripts/gameOver.gd" id="6_ohyi5"]
-[ext_resource type="PackedScene" uid="uid://b8cpryrp0uyom" path="res://scenes/TD/enemies/ene_fast.tscn" id="7_lodxj"]
-[ext_resource type="PackedScene" uid="uid://d1knla2jxxixu" path="res://scenes/TD/enemies/ene_heavy.tscn" id="8_y1v6b"]
-[ext_resource type="PackedScene" uid="uid://d3cgpxrbodn1g" path="res://scenes/TD/enemies/ene_light.tscn" id="9_40ykj"]
-[ext_resource type="PackedScene" uid="uid://1675kbp4lsoi" path="res://scenes/TD/enemies/ene_medium.tscn" id="10_hrofl"]
+[ext_resource type="AudioStream" uid="uid://cbla5x7uf3cyt" path="res://scenes/TD/levels/level0/cancion.wav" id="7_vnrov"]
 
 [sub_resource type="Animation" id="Animation_p4tb3"]
 length = 0.001
@@ -92,18 +89,25 @@ metadata/_edit_use_anchors_ = true
 [node name="cursor" parent="." instance=ExtResource("5_15meq")]
 
 [node name="lines" type="Node2D" parent="."]
+position = Vector2(83, 0)
 
 [node name="Marker2D" type="Marker2D" parent="lines"]
-position = Vector2(1110, 551)
+position = Vector2(1031, 431)
+
+[node name="Marker2D5" type="Marker2D" parent="lines"]
+position = Vector2(1032, 518)
+
+[node name="Marker2D6" type="Marker2D" parent="lines"]
+position = Vector2(1032, 603)
 
 [node name="Marker2D2" type="Marker2D" parent="lines"]
-position = Vector2(1113, 428)
+position = Vector2(1033, 344)
 
 [node name="Marker2D3" type="Marker2D" parent="lines"]
-position = Vector2(1113, 307)
+position = Vector2(1030, 251)
 
 [node name="Marker2D4" type="Marker2D" parent="lines"]
-position = Vector2(1113, 180)
+position = Vector2(1029, 170)
 
 [node name="GameOverArea" type="Area2D" parent="."]
 position = Vector2(-139, 292)
@@ -118,16 +122,7 @@ shape = SubResource("RectangleShape2D_mhdlx")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(578, 322)
 
-[node name="enemie2" parent="." instance=ExtResource("7_lodxj")]
-position = Vector2(1008, 238)
-
-[node name="enemie" parent="." instance=ExtResource("8_y1v6b")]
-position = Vector2(1015, 369)
-
-[node name="enemie3" parent="." instance=ExtResource("9_40ykj")]
-position = Vector2(963, 414)
-
-[node name="enemie4" parent="." instance=ExtResource("10_hrofl")]
-position = Vector2(895, 294)
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vnrov")
 
 [connection signal="area_entered" from="GameOverArea" to="GameOverArea" method="_on_area_entered"]

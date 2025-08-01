@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://nk1dcdlc4c24" path="res://scenes/TD/gridT.gd" id="1_3gfx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lw4x"]
-size = Vector2(105, 117)
+size = Vector2(87, 86)
 
 [node name="gridTower" type="Area2D"]
 collision_layer = 8
