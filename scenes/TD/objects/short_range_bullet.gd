@@ -1,8 +1,6 @@
-extends Area2D
+extends Bullet
 
-@export var speed: float = 900
-@export var effect: String = "nothing"
-@export var damage: int = 100
+
 @export var min_damage: int = 8 
 
 @onready var timer: Timer = $Timer
@@ -28,3 +26,4 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_timer_timeout():
 	if damage > min_damage:
 		damage -= 1
+		
