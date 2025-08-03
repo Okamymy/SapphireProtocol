@@ -14,10 +14,10 @@ size = Vector2(5.99117, 20)
 
 [node name="enemie" type="CharacterBody2D"]
 scale = Vector2(3.965, 3.965)
-collision_layer = 0
 script = ExtResource("1_ucex4")
 maxHealth = 20
 speed = 45.0
+pointsToDei = 32
 qtr_free = 32
 RAM_Scene = ExtResource("2_mg52m")
 

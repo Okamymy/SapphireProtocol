@@ -36,7 +36,8 @@ func tryPutTower():
 		var newTower= currentCard.tower.instantiate()
 		current_word.towers.add_child(newTower)
 		newTower.global_position= currentCell.global_position
-		puttedTower[currentPosition]=newTower
+		newTower.gridPosition=currentPosition
+		puttedTower[currentPosition]=newTower.gridPosition
 		TdSystemMb.removeByte(currentCard.priceMB)
 		currentCard=null
 		currentCell=null
@@ -53,3 +54,8 @@ func cancelTower():
 	cursorTower.updateTexture(null)
 	hud.showButtonCancel(false)
 	
+func change_scene(path: String):
+	get_tree().change_scene_to_file(path)
+
+func reload_scene():
+	get_tree().reload_current_scene()

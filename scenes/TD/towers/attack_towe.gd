@@ -12,6 +12,7 @@ var isEnemyNear:bool = false
 @onready var timer: Timer = $Timer
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+
 func _process(_delta):
 	isEnemyNear = false  # Reiniciamos cada frame
 	

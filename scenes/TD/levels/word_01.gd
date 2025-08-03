@@ -21,6 +21,7 @@ const ENEMY_TYPES = [
 
 # Puntos de spawn
 @onready var MARKERS = [$lines/Marker2D, $lines/Marker2D5, $lines/Marker2D6, $lines/Marker2D2, $lines/Marker2D3, $lines/Marker2D4]
+const MAIN_MENUL = preload("res://scenes/MainMenu/MainMenul.tscn")
 
 # --- Variables para controlar la oleada ---
 var beat_times: Array = []
@@ -34,23 +35,37 @@ func _ready():
 	TdSystemGameManager.cursorTower = $cursor
 	makeGrid()
 	cells.visible = false
-	
 	wordInit()
 	
 	# Inicia la oleada de enemigos y la música
 	start_wave()
 	music_player.play()
+	
 
 func _process(delta: float):
 	if not wave_is_active or current_beat_index >= beat_times.size():
 		return
-
 	var current_music_time = music_player.get_playback_position()
 	
 	if current_music_time >= beat_times[current_beat_index]:
 		spawn_random_enemy()
 		current_beat_index += 1
-
+		
+		# --- AQUÍ ESTÁ EL CAMBIO ---
+		# Comprueba si el índice actual ya alcanzó el final de la lista de beats.
+		if current_beat_index >= beat_times.size():
+			wave_is_active = false # Detiene la lógica de _process para optimizar
+			EndLevel()
+		# -------------------------
+const CHARSET = "abcdefghijklmnopqrstuvwxyz0123456789"
+func generate_random_string(length: int) -> String:
+	var result = ""
+	for i in range(length):
+		# Pick a random character from the charset string
+		var random_char = CHARSET[randi_range(0, CHARSET.length() - 1)]
+		# Append it to our result
+		result += random_char
+	return result
 func start_wave():
 	if BEATS_DATA and BEATS_DATA.data is Array:
 		beat_times = BEATS_DATA.data
@@ -81,3 +96,21 @@ func makeGrid():
 			newCell.cellPosition = Vector2i(x, y)
 			cells.add_child(newCell)
 			newCell.position = Vector2(150,170) + (Vector2(x,y) * Vector2(87,86))
+			
+			
+func EndLevel():
+	var numberLevelQuery="
+			SELECT  p.noPartida
+			FROM Jugador as j
+			inner join partida as p on p.jugador = j.noJugador
+			WHERE j.nombre = %s "%[DataUserSystem.username]
+	var numberLevel = await ConctorDB.set_query(numberLevelQuery)
+	var query = "
+				INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES (%s, %s, 'TW01',  3500, 1, '00:05:32')" % [generate_random_string(3),numberLevel[0]]
+	var queryUser = await ConctorDB.set_query(query)
+			
+			
+
+
+func _on_game_over_area_area_entered(area: Area2D):
+	TdSystemGameManager.change_scene("res://scenes/MainMenu/MainMenul.tscn")

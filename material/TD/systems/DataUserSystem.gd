@@ -1,7 +1,7 @@
 extends Node
 
 @export var username:String
-var tempPoints:int
+@export var tempPoints:int
 var tempPointsEnemies:int
 var tempPointsTowers:int
 

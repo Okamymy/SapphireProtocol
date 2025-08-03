@@ -14,10 +14,10 @@ size = Vector2(5.99117, 20)
 
 [node name="enemie" type="CharacterBody2D"]
 scale = Vector2(3.965, 3.965)
-collision_layer = 0
 slide_on_ceiling = false
 script = ExtResource("1_75s50")
 maxHealth = 200
+pointsToDei = 128
 qtr_free = 128
 RAM_Scene = ExtResource("2_k4xis")
 

@@ -2,19 +2,19 @@ extends Control
 
 @onready var panel_settings: Panel = $PanelSettings
 @onready var menu_main: VBoxContainer = $MenuMain
-
-
-const siguiente_escena = preload("res://scenes/TD/levels/level0/level00.tscn")
 @onready var option_button_user: OptionButton = $EnterUser/RegistrerUser/VBoxContainer2/OptionButtonUser
+
 var queryUser=[]
+
 func _ready() -> void:
-	var query_sql = "SELECT nombre FROM jugador"
-	queryUser =await ConctorDB.set_query(query_sql)
-	for data in queryUser:
-		option_button_user.add_item(data.nombre)
-
-
-
+	if DataUserSystem.username:
+		$EnterUser.visible=false
+		$UserNameLabel.text=DataUserSystem.username
+	else:
+		var query_sql = "SELECT nombre FROM jugador"
+		queryUser =await ConctorDB.set_query(query_sql)
+		for data in queryUser:
+			option_button_user.add_item(data.nombre)
 
 
 # Main menu
@@ -23,7 +23,7 @@ func _on_exit_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_packed(siguiente_escena)
+	TdSystemGameManager.change_scene("res://scenes/TD/levels/level0/level00.tscn")
 
 
 func _on_settings_pressed() -> void:
@@ -54,7 +54,7 @@ func _on_h_scroll_bar_value_changed(value: float) -> void:
 @onready var user_name_label: Label = $UserNameLabel
 @onready var enter_user: Panel = $EnterUser
 func _on_button_select_user_pressed() -> void:
-	var user = option_button_user.get_item_text(option_button_user.get_selectable_item())
+	var user = option_button_user.get_item_text(option_button_user.get_selected_id())
 	if user:
 		DataUserSystem.getUserName(user)
 		enter_user.visible=false
@@ -69,13 +69,11 @@ func _on_button_register_user_pressed() -> void:
 		for data in queryUser:
 			if (data.nombre==register_user_text.text):
 				return
-		var query = "INSERT INTO Jugador (nombre, fechaCreacion, ultimaConexion, eMail) VALUES ('%s', CURDATE(), CURDATE(), '%s@mail.com')" % [register_user_text.text,register_user_text.text]
+		var query = "INSERT INTO Jugador (nombre, fechaCreacion, ultimaConexion, eMail) VALUES ('%s', CURDATE(), CURDATE(), '%s@sapphire.gov')" % [register_user_text.text,register_user_text.text]
 		var queryUser =await ConctorDB.set_query(query)
 		DataUserSystem.getUserName(register_user_text.text)
 		enter_user.visible=false
 		user_name_label.text=register_user_text.text
-		
-		
 
 
 @onready var registrer_user: MarginContainer = $EnterUser/RegistrerUser

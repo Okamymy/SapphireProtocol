@@ -16,7 +16,8 @@ var currentHealth:int =20
 #movimiento
 @export var speed:float = 25
 var direction :=-1
-
+#putuacion que suelta
+@export var pointsToDei:int=0
 #Ataque
 @export var damage:int = 16
 @export var dalay:float=1.5
@@ -80,7 +81,7 @@ func getDamage(qtyDamage:int, effect:String=''):
 		
 func _on_death():
 	var newRAM: RAM = RAM_Scene.instantiate()
-	
+	DataUserSystem.tempPoints+=pointsToDei
 	get_tree().current_scene.add_child(newRAM)
 	newRAM.global_position = self.global_position
 	newRAM.qtyram=qtr_free

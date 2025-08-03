@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bme53pgkhtbwa"]
 
-[ext_resource type="Script" uid="uid://cpc6rob7vtk73" path="res://scenes/TD/defender_tower.gd" id="1_ylj3t"]
+[ext_resource type="Script" uid="uid://cpc6rob7vtk73" path="res://scenes/TD/towers/defender_tower.gd" id="1_ylj3t"]
 [ext_resource type="Texture2D" uid="uid://bron1yn7n82au" path="res://material/TD/sprites/tower.png" id="2_oihu5"]
 
 [node name="Node2D" type="Node2D"]
