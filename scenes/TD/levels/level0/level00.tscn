@@ -52,6 +52,7 @@ size = Vector2(120.5, 639.5)
 script = ExtResource("1_jst4d")
 qtyEnemiesPerHorde = Array[int]([2, 2, 4, 5, 2])
 timePerHorde = Array[float]([2.7, 4.0, 2.0, 3.0, 2.0])
+levelCode = "TW01"
 lineNode = NodePath("lines")
 
 [node name="bgAnimation" type="AnimationPlayer" parent="."]

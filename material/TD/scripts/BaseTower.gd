@@ -5,6 +5,9 @@ var health:int
 @export var maxHealt:int = 100.0
 @export var gridPosition:Vector2i
 @export var megabytesSize:int =16
+@export var codeTower=''
+
+
 
 func initTower():
 	health=maxHealt

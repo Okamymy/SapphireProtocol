@@ -5,6 +5,7 @@ extends Node2D
 @export var qtyHorde:int=5
 @export var qtyEnemiesPerHorde:Array[int]=[2]
 @export var timePerHorde:Array[float]=[2.7]
+@export var levelCode:String
  
 var timerHorde:Timer
 

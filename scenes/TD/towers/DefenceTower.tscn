@@ -34,6 +34,7 @@ _data = {
 
 [node name="AttackTowe" type="Node2D"]
 script = ExtResource("1_ly7vr")
+codeTower = "TR3S"
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 2

@@ -1,5 +1,5 @@
 class_name  Explosion
-extends BaseTower
+extends Area2D
 
 func _ready() -> void:
 	$AnimationPlayer.play("explosion")

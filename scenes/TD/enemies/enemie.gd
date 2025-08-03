@@ -9,6 +9,8 @@ enum{
 var currentState = MOVE
 var previusState 
 
+@export var codeEnemy=''
+
 #salud
 @export var maxHealth:int =64
 var currentHealth:int =20
@@ -67,7 +69,8 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func attackTower():
 	if (currentAttackTower != null):
-		currentAttackTower.getDamage(damage)
+		
+		currentAttackTower.call_deferred("getDamage", damage)
 		delayPerDamge.start()
 
 func getDamage(qtyDamage:int, effect:String=''):

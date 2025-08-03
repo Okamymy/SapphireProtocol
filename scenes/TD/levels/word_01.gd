@@ -30,7 +30,7 @@ var wave_is_active: bool = false
 
 func _ready():
 	bg_animation.play("new_animation")
-	
+	EndLevel()
 	TdSystemGameManager.current_word = self
 	TdSystemGameManager.cursorTower = $cursor
 	makeGrid()
@@ -56,7 +56,7 @@ func _process(delta: float):
 		if current_beat_index >= beat_times.size():
 			wave_is_active = false # Detiene la lógica de _process para optimizar
 			EndLevel()
-		# -------------------------
+			
 const CHARSET = "abcdefghijklmnopqrstuvwxyz0123456789"
 func generate_random_string(length: int) -> String:
 	var result = ""
@@ -103,11 +103,26 @@ func EndLevel():
 			SELECT  p.noPartida
 			FROM Jugador as j
 			inner join partida as p on p.jugador = j.noJugador
-			WHERE j.nombre = %s "%[DataUserSystem.username]
+			WHERE j.nombre = '%s' "%[DataUserSystem.username]
 	var numberLevel = await ConctorDB.set_query(numberLevelQuery)
-	var query = "
-				INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES (%s, %s, 'TW01',  3500, 1, '00:05:32')" % [generate_random_string(3),numberLevel[0]]
-	var queryUser = await ConctorDB.set_query(query)
+	var resultLevelQuery="
+		select codigo
+		from `resultadosnivel` 
+		WHERE nivel='%s' and noPartida = %s
+	"%[levelCode,numberLevel[0].noPartida]
+	var resultLevel =await ConctorDB.set_query(numberLevelQuery)
+	if resultLevel:
+		pass
+	else:
+		var query = "
+					INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES ('%s', %s, 'TW01',  3500, 1, '00:05:32')" % [generate_random_string(5),numberLevel[0].noPartida]
+		var queryUser = await ConctorDB.set_query(query)
+		query = "
+					INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES ('%s', %s, 'TW01',  3500, 1, '00:05:32')" % [generate_random_string(5),numberLevel[0].noPartida]
+		var queryTower = await ConctorDB.set_query(query)
+		query = "
+					INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES ('%s', %s, 'TW01',  3500, 1, '00:05:32')" % [generate_random_string(5),numberLevel[0].noPartida]
+		var queryEnemies = await ConctorDB.set_query(query)
 			
 			
 
