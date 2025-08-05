@@ -17,9 +17,7 @@ func _process(_delta):
 	isEnemyNear = false  # Reiniciamos cada frame
 	
 	if ray_cast_2d.is_colliding():
-		# Problemas al validar si es el enemigo lo dejo directo
-		#	var collider = ray_cast_2d.get_collider()
-		#	if collider and collider.is_in_group("enemys"):  
+	
 		isEnemyNear = true
 		
 

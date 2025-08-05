@@ -1,7 +1,5 @@
 extends Control
 @onready var http_request: HTTPRequest = $HTTPRequest
-
-
 func set_query(query_string: String) -> Variant:
 	var url = "http://localhost/sapphire.php"
 	var bodyhttp = "query=" + query_string.uri_encode()
@@ -14,7 +12,7 @@ func set_query(query_string: String) -> Variant:
 	var result: Array = await http_request.request_completed
 	var response_code = result[1]
 	var body = result[3]
-	
+
 	if response_code != 200:
 		print("ERROR: El servidor devolvió el código: ", response_code)
 		return null

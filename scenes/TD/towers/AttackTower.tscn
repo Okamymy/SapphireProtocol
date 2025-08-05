@@ -108,6 +108,7 @@ maxHealt = 32
 codeTower = "TR51"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(2, -14)
 target_position = Vector2(1641, 10)
 
 [node name="Timer" type="Timer" parent="."]

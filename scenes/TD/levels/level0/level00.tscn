@@ -89,7 +89,7 @@ metadata/_edit_use_anchors_ = true
 [node name="cursor" parent="." instance=ExtResource("5_15meq")]
 
 [node name="lines" type="Node2D" parent="."]
-position = Vector2(74, -25)
+position = Vector2(74, -1)
 
 [node name="Marker2D" type="Marker2D" parent="lines"]
 position = Vector2(1031, 431)

@@ -29,13 +29,12 @@ var current_beat_index: int = 0
 var wave_is_active: bool = false
 
 func _ready():
+	wordInit()
 	bg_animation.play("new_animation")
-	EndLevel()
 	TdSystemGameManager.current_word = self
 	TdSystemGameManager.cursorTower = $cursor
 	makeGrid()
 	cells.visible = false
-	wordInit()
 	
 	# Inicia la oleada de enemigos y la música
 	start_wave()
@@ -50,11 +49,8 @@ func _process(delta: float):
 	if current_music_time >= beat_times[current_beat_index]:
 		spawn_random_enemy()
 		current_beat_index += 1
-		
-		# --- AQUÍ ESTÁ EL CAMBIO ---
-		# Comprueba si el índice actual ya alcanzó el final de la lista de beats.
 		if current_beat_index >= beat_times.size():
-			wave_is_active = false # Detiene la lógica de _process para optimizar
+			wave_is_active = false 
 			EndLevel()
 			
 const CHARSET = "abcdefghijklmnopqrstuvwxyz0123456789"
@@ -99,6 +95,8 @@ func makeGrid():
 			
 			
 func EndLevel():
+	stopTimer()
+	var timeLeftPlayed= formatTime(timerHorde.time_left)
 	var numberLevelQuery="
 			SELECT  p.noPartida
 			FROM Jugador as j
@@ -111,18 +109,23 @@ func EndLevel():
 		WHERE nivel='%s' and noPartida = %s
 	"%[levelCode,numberLevel[0].noPartida]
 	var resultLevel =await ConctorDB.set_query(numberLevelQuery)
+	
 	if resultLevel:
 		pass
 	else:
+		var codeResultLevel=generate_random_string(5)
 		var query = "
-					INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES ('%s', %s, 'TW01',  3500, 1, '00:05:32')" % [generate_random_string(5),numberLevel[0].noPartida]
+					INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES ('%s', %s, '%s',  '%s', 1, '%s')" % [codeResultLevel,numberLevel[0].noPartida, levelCode, DataUserSystem.tempPoints,timeLeftPlayed] 
 		var queryUser = await ConctorDB.set_query(query)
-		query = "
-					INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES ('%s', %s, 'TW01',  3500, 1, '00:05:32')" % [generate_random_string(5),numberLevel[0].noPartida]
-		var queryTower = await ConctorDB.set_query(query)
-		query = "
-					INSERT INTO ResultadosNivel (codigo, noPartida, nivel, puntajeMayor, intentos, mejorTiempo) VALUES ('%s', %s, 'TW01',  3500, 1, '00:05:32')" % [generate_random_string(5),numberLevel[0].noPartida]
-		var queryEnemies = await ConctorDB.set_query(query)
+		
+		for data in DataUserSystem.currentEnemiesCodes:
+			query = "
+					INSERT INTO Niv_Ene (nivel, enemigo, cantidad) VALUES ('%s', '%s', %s)"%[levelCode, data.code, data.qty]
+			var queryTower = await ConctorDB.set_query(query)
+		for data in DataUserSystem.currentEnemiesCodes:
+			query = "
+					INSERT INTO Niv_Tor (resultadoNivel, torreta, cantidadUsada, danoTotal) VALUES ('%s', '%s', %s, %s)" % [codeResultLevel, data.code, data.qty, data.damage]
+			var queryEnemies = await ConctorDB.set_query(query)
 			
 			
 

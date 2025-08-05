@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cyeu4spqkeref" path="res://material/TD/sprites/enemies/Enemy01.png" id="3_dcibh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfs0i"]
-size = Vector2(14.2875, 5)
+size = Vector2(14.2875, 18.8272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fqq2"]
 size = Vector2(5.99117, 20)
@@ -14,7 +14,6 @@ size = Vector2(5.99117, 20)
 
 [node name="enemie" type="CharacterBody2D"]
 scale = Vector2(3.965, 3.965)
-collision_mask = 0
 script = ExtResource("1_i6kwn")
 codeEnemy = "ENR4"
 maxHealth = 88
@@ -29,13 +28,13 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_dcibh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.85624, 7.5)
+position = Vector2(2.85624, 0.586381)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pfs0i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="collitionOut" type="Area2D" parent="."]
-collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collitionOut"]
@@ -47,7 +46,7 @@ debug_color = Color(0.998664, 0, 0.135999, 0.42)
 one_shot = true
 
 [node name="collitionIn" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 5
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collitionIn"]

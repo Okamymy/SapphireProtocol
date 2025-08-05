@@ -22,7 +22,6 @@ func wordInit():
 	add_child(timerHorde)
 	timerHorde.wait_time=timePerHorde[0]
 	
-	timerHorde.timeout.connect(hordeInit)
 	timerHorde.start()
 	
 	for enemies in qtyEnemiesPerHorde:
@@ -34,13 +33,21 @@ func hordeInit():
 	
 	if(qtyEnemiesPerHorde.size()<currentHorde or timePerHorde.size()<currentHorde):
 		return
-	#spawn enemies
-	enemies_spawner(qtyEnemiesPerHorde[currentHorde]) 
-	timerHorde.wait_time=timePerHorde[currentHorde]
-	timerHorde.start()
-	
-func enemies_spawner(total:int):
-	pass
+
 
 func enemiesDestroy():
 	cuerrentEnemies-=1
+	
+func formatTime(total_seconds: float) -> String:
+	var seconds_int = int(total_seconds)
+	
+	var hours = seconds_int / 3600
+	var minutes = (seconds_int % 3600) / 60
+	var seconds = seconds_int % 60
+	
+	return "%02d:%02d:%02d" % [hours, minutes, seconds]
+	
+	
+func stopTimer():
+	if timerHorde != null:
+		timerHorde.stop()

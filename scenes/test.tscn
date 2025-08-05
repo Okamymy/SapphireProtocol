@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckj31b8rd7xho"]
+
+[ext_resource type="PackedScene" uid="uid://b8cpryrp0uyom" path="res://scenes/TD/enemies/ene_fast.tscn" id="1_bl13t"]
+[ext_resource type="PackedScene" uid="uid://cg76yxe10a57w" path="res://scenes/TD/towers/AttackTower.tscn" id="2_iyx0m"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AttackTowe" parent="." instance=ExtResource("2_iyx0m")]
+position = Vector2(71, 75)
+
+[node name="enemie" parent="." instance=ExtResource("1_bl13t")]
+position = Vector2(780, 64)

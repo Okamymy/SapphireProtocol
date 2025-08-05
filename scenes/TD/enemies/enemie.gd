@@ -88,4 +88,11 @@ func _on_death():
 	get_tree().current_scene.add_child(newRAM)
 	newRAM.global_position = self.global_position
 	newRAM.qtyram=qtr_free
-	queue_free()
+	var enemyFind = false
+	for dict_enemy in DataUserSystem.currentEnemiesCodes:
+		if dict_enemy["code"] == codeEnemy:
+			dict_enemy["qty"] += 1
+			enemyFind = true
+			break 
+	if not enemyFind:
+		DataUserSystem.currentEnemiesCodes.append({"code": codeEnemy, "qty": 1})

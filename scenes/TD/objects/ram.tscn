@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://deitq8g4qhoth"]
 
-[ext_resource type="Texture2D" uid="uid://dxtfvm1bc76so" path="res://material/TD/sprites/ram.png" id="1_1y2i4"]
+[ext_resource type="Texture2D" uid="uid://dxtfvm1bc76so" path="res://material/TD/sprites/objects/ram.png" id="1_1y2i4"]
 [ext_resource type="Script" uid="uid://dx4fc83hdmbr7" path="res://scenes/TD/objects/ram.gd" id="1_3jbl0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3jbl0"]

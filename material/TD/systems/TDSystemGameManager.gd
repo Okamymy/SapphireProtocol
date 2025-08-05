@@ -16,7 +16,6 @@ func _physics_process(delta: float) -> void:
 		cursorTower.global_position = get_global_mouse_position()
 
 func selectTower(tower:TowerPanel):
-#
 	if TdSystemMb.megabytes<tower.priceMB:
 		return
 	currentCard=tower
@@ -45,7 +44,7 @@ func tryPutTower():
 		current_word.showCells(false)
 		cursorTower.updateTexture(null)
 		hud.showButtonCancel(false)
-
+		
 func cancelTower():
 	currentCard=null
 	currentCell=null

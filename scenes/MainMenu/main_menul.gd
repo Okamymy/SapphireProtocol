@@ -12,10 +12,10 @@ func _ready() -> void:
 		$UserNameLabel.text=DataUserSystem.username
 	else:
 		var query_sql = "SELECT nombre FROM jugador"
-		queryUser =await ConctorDB.set_query(query_sql)
+		queryUser = await ConctorDB.set_query(query_sql)
 		for data in queryUser:
 			option_button_user.add_item(data.nombre)
-
+		queryUser[0].nombre
 
 # Main menu
 func _on_exit_pressed() -> void:
@@ -176,7 +176,7 @@ func _on_score_board_pressed() -> void:
 		scoreboard_text_names.text+=data.nombreJugador + "\n"
 		scoreboard_text_scores.text+=data.puntajeTotal + "\n"
 	panel_score_board.visible= true
-	
+
 
 func _on_back_score_board_pressed() -> void:
 	panel_score_board.visible = false
