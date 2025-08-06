@@ -126,9 +126,7 @@ func EndLevel():
 			query = "
 					INSERT INTO Niv_Tor (resultadoNivel, torreta, cantidadUsada, danoTotal) VALUES ('%s', '%s', %s, %s)" % [codeResultLevel, data.code, data.qty, data.damage]
 			var queryEnemies = await ConctorDB.set_query(query)
-			
-			
-
+	$CanvasLayer2/GameOver.visible=true
 
 func _on_game_over_area_area_entered(area: Area2D):
-	TdSystemGameManager.change_scene("res://scenes/MainMenu/MainMenul.tscn")
+	$CanvasLayer2/GameOver.visible=true

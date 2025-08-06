@@ -134,18 +134,23 @@ func _on_user_data_pressed() -> void:
 				GROUP BY j.noJugador;" % [DataUserSystem.username]
 	var queryUser =await ConctorDB.set_query(query)
 	var player=queryUser[0]
-	var textFormat = "Player #" + player["noJugador"] + " - " + player["nombreJugador"] + "\n" \
-	+ "Email: " + player["eMail"] + "\n" \
-	+ "date create: " + player["fechaCreacion"] + "\n" \
-	+ "last conection: " + player["ultimaConexion"] + "\n" \
-	+ "Total de partidas: " + player["totalPartidas"] + "\n" \
-	+ "Tiempo total jugado: " + player["tiempoTotalJugado"] + "\n" \
-	+ "Logros obtenidos: " + player["logrosObtenidos"] + "\n" \
-	+ "RAM máxima actual: " + player["RAMMaximaActual"] + " MB\n" \
-	+ "Créditos actuales: " + player["creditosActuales"]
+# Así se ve tu código al usar la función auxiliar
+	var textFormat = "Player #" + get_string_or_default(player["noJugador"]) + " - " + get_string_or_default(player["nombreJugador"]) + "\n" \
+	+ "Email: " + get_string_or_default(player["eMail"]) + "\n" \
+	+ "date create: " + get_string_or_default(player["fechaCreacion"]) + "\n" \
+	+ "last conection: " + get_string_or_default(player["ultimaConexion"]) + "\n" \
+	+ "Total de partidas: " + get_string_or_default(player["totalPartidas"]) + "\n" \
+	+ "Tiempo total jugado: " + get_string_or_default(player["tiempoTotalJugado"]) + "\n" \
+	+ "Logros obtenidos: " + get_string_or_default(player["logrosObtenidos"]) + "\n" \
+	+ "RAM máxima actual: " + get_string_or_default(player["RAMMaximaActual"]) + " MB\n" \
+	+ "Créditos actuales: " + get_string_or_default(player["creditosActuales"])
 	data_panel_user_data.text=textFormat
 	panel_user_data.visible=true
 
+func get_string_or_default(value, default_text = "N/A"):
+	if value == null:
+		return default_text
+	return str(value)
 
 func _on_back_panel_user_data_pressed() -> void:
 	panel_user_data.visible=false

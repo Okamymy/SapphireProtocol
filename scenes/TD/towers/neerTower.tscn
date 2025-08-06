@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ci4y1hfwccd6h"]
+[gd_scene load_steps=23 format=3 uid="uid://ci4y1hfwccd6h"]
 
 [ext_resource type="Script" uid="uid://c2x75mqlgiowb" path="res://scenes/TD/towers/attack_towe.gd" id="1_lxomc"]
 [ext_resource type="PackedScene" uid="uid://djw4kq7sj141o" path="res://scenes/TD/objects/shortRangeBullet.tscn" id="2_ts4rf"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bofbr8lv75s25" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-9.png" id="14_3x7sp"]
 [ext_resource type="Texture2D" uid="uid://d15l5a23japtb" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-10.png" id="15_1yjfi"]
 [ext_resource type="Texture2D" uid="uid://basjbfucxgwdm" path="res://material/TD/sprites/towers/TR_0001/shot/TR11-Gawain-11.png" id="16_3e5bc"]
+[ext_resource type="Texture2D" uid="uid://ri533t7f1q62" path="res://material/TD/sprites/towers/Torreta03.png" id="17_ts4rf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w8n3l"]
 animations = [{
@@ -113,6 +114,7 @@ target_position = Vector2(1641, 10)
 [node name="Timer" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(4.4961, -7.50391)
 scale = Vector2(1.22992, 1.22992)
 sprite_frames = SubResource("SpriteFrames_w8n3l")
@@ -120,7 +122,7 @@ animation = &"shot"
 frame_progress = 0.342962
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(60, -14)
+position = Vector2(51, -11)
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -135,3 +137,8 @@ debug_color = Color(1.8771e-06, 0.649197, 0.153478, 0.42)
 libraries = {
 &"": SubResource("AnimationLibrary_j0u2m")
 }
+
+[node name="Torreta03" type="Sprite2D" parent="."]
+position = Vector2(0.625002, -18.625)
+scale = Vector2(1.69922, 1.69922)
+texture = ExtResource("17_ts4rf")

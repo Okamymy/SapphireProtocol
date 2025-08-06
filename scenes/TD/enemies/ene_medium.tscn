@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cyeu4spqkeref" path="res://material/TD/sprites/enemies/Enemy01.png" id="3_2yqhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfs0i"]
-size = Vector2(14.2875, 5)
+size = Vector2(21.6015, 17.8184)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fqq2"]
 size = Vector2(5.99117, 20)
@@ -29,7 +29,8 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_2yqhl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.85624, 7.5)
+position = Vector2(-0.800761, 1.09079)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pfs0i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

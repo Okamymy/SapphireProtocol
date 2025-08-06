@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccn10t6tpyib"]
+[gd_scene load_steps=12 format=3 uid="uid://ccn10t6tpyib"]
 
 [ext_resource type="Script" uid="uid://cxqct23kya5u4" path="res://scenes/TD/levels/word_01.gd" id="1_jst4d"]
 [ext_resource type="Texture2D" uid="uid://bplolt7addgp3" path="res://scenes/TD/levels/level0/bg.png" id="2_p4tb3"]
 [ext_resource type="Texture2D" uid="uid://d2a7k4ypiddia" path="res://material/TD/sprites/MapCon01.png" id="3_xc1ag"]
 [ext_resource type="PackedScene" uid="uid://5gn83odk4b1t" path="res://material/TD/UI/hud.tscn" id="4_3junv"]
 [ext_resource type="PackedScene" uid="uid://cvcuemhgetw8p" path="res://scenes/TD/cursorTower.tscn" id="5_15meq"]
+[ext_resource type="PackedScene" uid="uid://cxm6j71g7ml1r" path="res://scenes/gameOverMenu/gameOver.tscn" id="7_jk5k2"]
 [ext_resource type="AudioStream" uid="uid://cbla5x7uf3cyt" path="res://scenes/TD/levels/level0/cancion.wav" id="7_vnrov"]
 
 [sub_resource type="Animation" id="Animation_p4tb3"]
@@ -75,8 +76,8 @@ texture = ExtResource("3_xc1ag")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("4_3junv")]
+anchors_preset = -1
 anchor_left = 0.109
-anchor_top = 0.0
 anchor_bottom = 0.099
 offset_left = 0.431992
 offset_top = -4.0
@@ -118,10 +119,13 @@ collision_mask = 4
 position = Vector2(79, 26)
 shape = SubResource("RectangleShape2D_mhdlx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(578, 322)
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_vnrov")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="GameOver" parent="CanvasLayer2" instance=ExtResource("7_jk5k2")]
+visible = false
 
 [connection signal="area_entered" from="GameOverArea" to="." method="_on_game_over_area_area_entered"]

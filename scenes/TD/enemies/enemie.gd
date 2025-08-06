@@ -96,3 +96,4 @@ func _on_death():
 			break 
 	if not enemyFind:
 		DataUserSystem.currentEnemiesCodes.append({"code": codeEnemy, "qty": 1})
+	queue_free()

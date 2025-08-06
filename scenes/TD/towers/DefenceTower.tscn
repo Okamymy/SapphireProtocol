@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dy2hikoyui7yi"]
 
 [ext_resource type="Script" uid="uid://cd1348meqcqsc" path="res://scenes/TD/towers/defence_tower.gd" id="1_ly7vr"]
-[ext_resource type="Texture2D" uid="uid://bron1yn7n82au" path="res://material/TD/sprites/tower.png" id="2_ly7vr"]
+[ext_resource type="Texture2D" uid="uid://3mhap5ufedfx" path="res://material/TD/sprites/towers/saphire-escudo.png" id="2_ly7vr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvt1d"]
-size = Vector2(74, 81)
+size = Vector2(84, 74)
 
 [sub_resource type="Animation" id="Animation_3p7bw"]
 resource_name = "towe_atack"
@@ -37,18 +37,19 @@ script = ExtResource("1_ly7vr")
 codeTower = "TR3S"
 
 [node name="hitbox" type="Area2D" parent="."]
+position = Vector2(8, 0)
 collision_layer = 2
 collision_mask = 0
 
+[node name="Saphire-escudo" type="Sprite2D" parent="hitbox"]
+position = Vector2(1, 1)
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("2_ly7vr")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(1, -0.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_jvt1d")
 debug_color = Color(1.8771e-06, 0.649197, 0.153478, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="hitbox"]
-position = Vector2(1, -1)
-scale = Vector2(0.298387, 0.194444)
-texture = ExtResource("2_ly7vr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

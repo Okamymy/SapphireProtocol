@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bksuus7eul04h"]
+[gd_scene load_steps=5 format=3 uid="uid://bksuus7eul04h"]
 
 [ext_resource type="Script" uid="uid://7ynw50lwguhw" path="res://scenes/MainMenu/main_menul.gd" id="1_qd235"]
 [ext_resource type="VideoStream" uid="uid://dyxpmwtrd7baw" path="res://material/MainMenu/background/01/test.ogv" id="2_qd235"]
+[ext_resource type="FontFile" uid="uid://oorx7anhknn2" path="res://material/fonts/Jura/static/Jura-Bold.ttf" id="3_28201"]
+[ext_resource type="FontFile" uid="uid://b7o6nnnsg13ig" path="res://material/fonts/Jura/static/Jura-SemiBold.ttf" id="4_dx6y3"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -36,36 +38,43 @@ grow_vertical = 0
 [node name="MenuMain" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.152
-anchor_bottom = 0.416
+anchor_top = 0.119
+anchor_bottom = 0.488
 offset_left = 66.0
-offset_top = 0.00399017
-offset_right = 183.0
-offset_bottom = -0.0679932
+offset_top = -0.112
+offset_right = 261.0
+offset_bottom = -0.22403
 grow_vertical = 2
+theme_override_constants/separation = 16
 
 [node name="play" type="Button" parent="MenuMain"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 22
 text = "Play"
-
-[node name="store" type="Button" parent="MenuMain"]
-layout_mode = 2
-text = "store"
 
 [node name="scoreBoard" type="Button" parent="MenuMain"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 22
 text = "Scoreboard"
 
 [node name="userData" type="Button" parent="MenuMain"]
 layout_mode = 2
-text = "Player info"
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 22
+text = "My data"
 
 [node name="settings" type="Button" parent="MenuMain"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 22
 text = "settings"
 
 [node name="exit" type="Button" parent="MenuMain"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 22
 text = "Exit"
 
 [node name="PanelSettings" type="Panel" parent="."]
@@ -93,6 +102,8 @@ offset_left = -31.0
 offset_right = 31.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 23
 text = "Settings"
 
 [node name="volume" type="Label" parent="PanelSettings"]
@@ -103,10 +114,11 @@ anchor_top = 0.251
 anchor_right = 0.5
 anchor_bottom = 0.251
 offset_left = -31.0
-offset_top = 5.8
+offset_top = 3.8
 offset_right = 31.0
-offset_bottom = 28.8
+offset_bottom = 26.8
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_28201")
 text = "Volume"
 
 [node name="BackSettings" type="Button" parent="PanelSettings"]
@@ -122,6 +134,8 @@ offset_right = 22.5
 offset_bottom = -1.52588e-05
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 15
 text = "Back"
 
 [node name="HScrollBar" type="HScrollBar" parent="PanelSettings"]
@@ -139,22 +153,6 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 1.0
 step = 0.01
-
-[node name="PanelStatistics" type="Panel" parent="."]
-visible = false
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="PanelScoreBoard" type="Panel" parent="."]
 visible = false
@@ -177,10 +175,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -44.5
-offset_right = 44.5
-offset_bottom = 23.0
+offset_left = -54.0
+offset_top = 8.0
+offset_right = 54.0
+offset_bottom = 31.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 19
 text = "Scoreboard"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelScoreBoard"]
@@ -203,11 +204,13 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelScoreBoard/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_28201")
 text = "          Names"
 
 [node name="ScoreboardTextNames" type="RichTextLabel" parent="PanelScoreBoard/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_dx6y3")
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelScoreBoard/HBoxContainer"]
@@ -216,11 +219,13 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelScoreBoard/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "              Score"
+theme_override_fonts/font = ExtResource("3_28201")
+text = "          Score"
 
 [node name="ScoreboardTextScores" type="RichTextLabel" parent="PanelScoreBoard/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_dx6y3")
 horizontal_alignment = 1
 
 [node name="BackScoreBoard" type="Button" parent="PanelScoreBoard"]
@@ -236,6 +241,8 @@ offset_right = 23.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 22
 text = "Back"
 
 [node name="PanelUserData" type="Panel" parent="."]
@@ -259,10 +266,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -54.5
-offset_right = 54.5
-offset_bottom = 23.0
+offset_left = -70.0
+offset_top = 9.0
+offset_right = 70.0
+offset_bottom = 36.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 22
 text = "Data of user"
 
 [node name="DataPanelUserData" type="RichTextLabel" parent="PanelUserData"]
@@ -273,12 +283,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -20.0
-offset_right = 100.0
-offset_bottom = 20.0
+offset_left = -156.5
+offset_top = -167.5
+offset_right = 156.5
+offset_bottom = 167.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_28201")
 
 [node name="BackPanelUserData" type="Button" parent="PanelUserData"]
 layout_mode = 1
@@ -293,13 +304,9 @@ offset_right = 23.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_28201")
+theme_override_font_sizes/font_size = 20
 text = "Back"
-
-[node name="PanelUser" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="EnterUser" type="Panel" parent="."]
 custom_minimum_size = Vector2(300, 300)
@@ -335,10 +342,12 @@ layout_mode = 2
 
 [node name="ButtonSelectUser" type="Button" parent="EnterUser/RegistrerUser/VBoxContainer2"]
 layout_mode = 2
-text = "seleccionar usuario"
+theme_override_fonts/font = ExtResource("3_28201")
+text = "select user"
 
 [node name="GoToLogin" type="Button" parent="EnterUser/RegistrerUser/VBoxContainer2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_28201")
 text = "I don't have acount"
 
 [node name="LoginUser" type="MarginContainer" parent="EnterUser"]
@@ -365,10 +374,12 @@ layout_mode = 2
 
 [node name="ButtonRegisterUser" type="Button" parent="EnterUser/LoginUser/VBoxContainer"]
 layout_mode = 2
-text = "Crear usuario"
+theme_override_fonts/font = ExtResource("3_28201")
+text = "Create user"
 
 [node name="GoToRegister" type="Button" parent="EnterUser/LoginUser/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_28201")
 text = "I have acount"
 
 [connection signal="pressed" from="MenuMain/play" to="." method="_on_play_pressed"]

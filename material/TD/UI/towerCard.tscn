@@ -9,13 +9,8 @@ bg_color = Color(0.078112, 3.14053e-05, 0.298551, 0.294118)
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(100, 100)
-anchors_preset = -1
-anchor_right = 0.087
-anchor_bottom = 0.154
-offset_right = -0.224007
-offset_bottom = 0.207993
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 100.0
+offset_bottom = 100.0
 script = ExtResource("1_107mw")
 textureCard = ExtResource("2_2moc0")
 tower = ExtResource("3_7rwse")
