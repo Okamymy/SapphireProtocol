@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbmnrwttesdwe"]
+
+[ext_resource type="PackedScene" uid="uid://dyxw1svqgwjfs" path="res://BulletHell/Scenes/player.tscn" id="1_dylnp"]
+[ext_resource type="Script" uid="uid://ngqeoix7154w" path="res://BulletHell/Scripts/lvl_boss_bh.gd" id="1_xtow1"]
+[ext_resource type="PackedScene" uid="uid://b0ggke8omxw45" path="res://BulletHell/Scenes/Boss01.tscn" id="2_l47t0"]
+[ext_resource type="AudioStream" uid="uid://dpo55w631a3ug" path="res://BulletHell/Music/Pixelated-Fury.wav" id="3_0bgt3"]
+[ext_resource type="VideoStream" uid="uid://ke3lsuap0ux5" path="res://BulletHell/BackGround/backgroundBH.ogv" id="4_l47t0"]
+[ext_resource type="PackedScene" uid="uid://bb5hbnhoov038" path="res://BulletHell/Scenes/Barrier.tscn" id="5_0bgt3"]
+[ext_resource type="PackedScene" uid="uid://byi05cdcnp3v7" path="res://BulletHell/Scenes/hud.tscn" id="7_mngda"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xtow1")
+
+[node name="Background" type="VideoStreamPlayer" parent="."]
+offset_left = -337.0
+offset_top = -75.0
+offset_right = 1583.0
+offset_bottom = 1005.0
+stream = ExtResource("4_l47t0")
+autoplay = true
+loop = true
+
+[node name="Player" parent="." groups=["Bullet_Player"] instance=ExtResource("1_dylnp")]
+position = Vector2(548, 616)
+scale = Vector2(0.737901, 0.737901)
+fire_rate = 0.1
+
+[node name="Boss01" parent="." instance=ExtResource("2_l47t0")]
+position = Vector2(537, 91)
+scale = Vector2(3.60976, 3.60976)
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0bgt3")
+autoplay = true
+
+[node name="BarrierHelp" parent="." instance=ExtResource("5_0bgt3")]
+position = Vector2(358, 520)
+
+[node name="Area2D" parent="." instance=ExtResource("5_0bgt3")]
+position = Vector2(730, 517)
+
+[node name="HUD" parent="." instance=ExtResource("7_mngda")]
+
+[connection signal="playerDeath" from="Player" to="." method="_on_player_player_death"]
+[connection signal="playerHit" from="Player" to="." method="_on_player_player_hit"]
+[connection signal="bossDeath" from="Boss01" to="." method="_on_boss_01_boss_death"]
+[connection signal="scoreUpdate" from="Boss01" to="." method="score_update_boss"]

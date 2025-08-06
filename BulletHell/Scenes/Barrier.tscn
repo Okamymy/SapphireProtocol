@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb5hbnhoov038"]
+
+[ext_resource type="Script" uid="uid://cm5f4jow4r0gr" path="res://BulletHell/Scripts/barrier.gd" id="1_c4lbr"]
+[ext_resource type="Texture2D" uid="uid://namkofyo4hp0" path="res://BulletHell/Sprites/BarrierSprite.png" id="1_v183y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4lbr"]
+size = Vector2(88, 39)
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(1.48, 1.6087)
+script = ExtResource("1_c4lbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_c4lbr")
+
+[node name="BarrierSprite" type="Sprite2D" parent="."]
+scale = Vector2(2.6875, 2.6875)
+texture = ExtResource("1_v183y")

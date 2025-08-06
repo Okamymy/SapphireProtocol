@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://iy1r2c8e1rhh"]
+
+[ext_resource type="PackedScene" uid="uid://b0ggke8omxw45" path="res://BulletHell/Scenes/Boss01.tscn" id="1_y32ow"]
+[ext_resource type="PackedScene" uid="uid://dyxw1svqgwjfs" path="res://BulletHell/Scenes/player.tscn" id="2_xuf3l"]
+[ext_resource type="AudioStream" uid="uid://dpo55w631a3ug" path="res://BulletHell/Music/Pixelated-Fury.wav" id="3_xpelm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Boss01" parent="." instance=ExtResource("1_y32ow")]
+position = Vector2(543, 56)
+scale = Vector2(4.075, 4.075)
+
+[node name="Player" parent="." instance=ExtResource("2_xuf3l")]
+position = Vector2(556, 640)
+
+[node name="Pixelated-fury" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(140, 456)
+stream = ExtResource("3_xpelm")
+autoplay = true

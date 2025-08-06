@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://byi05cdcnp3v7"]
+
+[ext_resource type="Script" uid="uid://bse4y2rj7m3jr" path="res://BulletHell/Scripts/hud.gd" id="1_e0onf"]
+[ext_resource type="Texture2D" uid="uid://dvvx66pif13t" path="res://BulletHell/Sprites/blueHeart.png" id="2_fccik"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fccik"]
+bg_color = Color(0.230601, 0.647487, 0.839982, 0.176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjfho"]
+bg_color = Color(0, 0.772549, 0.988235, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_e0onf")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 33.0
+offset_top = 21.0
+offset_right = 270.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="BlueHeart" type="Sprite2D" parent="."]
+position = Vector2(1093, 587)
+scale = Vector2(0.0817603, 0.0817603)
+texture = ExtResource("2_fccik")
+
+[node name="Lifebar" type="ProgressBar" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -583.0
+offset_top = -63.0
+offset_right = -114.0
+offset_bottom = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_fccik")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bjfho")
+max_value = 300.0
+value = 300.0
+fill_mode = 1

@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyxw1svqgwjfs"]
+
+[ext_resource type="Script" uid="uid://p7gwppt8lfnq" path="res://BulletHell/Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://ckyg38mycqeqe" path="res://BulletHell/Scenes/bullet.tscn" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://dmne2hyoxk3mw" path="res://BulletHell/Sprites/ShipV2.png" id="3_6t5aa"]
+[ext_resource type="AudioStream" uid="uid://uridujsybvnc" path="res://BulletHell/SFX/laser-shoot7.wav" id="4_vgqql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(0, 0, 110, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(110, 0, 110, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkybt"]
+size = Vector2(58, 68)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
+radius = 48.0104
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_cvnsp")
+life = 300.0
+bullet_scene = ExtResource("2_6t5aa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vgqql")
+animation = &"idle"
+frame_progress = 0.494736
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fkybt")
+debug_color = Color(0.376459, 0.509085, 0.901243, 0.42)
+
+[node name="Gun" type="Marker2D" parent="."]
+position = Vector2(0, -30)
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="GunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vgqql")
+volume_db = -10.0
+
+[node name="BulletCollision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="AreaCollision" type="CollisionShape2D" parent="BulletCollision"]
+shape = SubResource("CircleShape2D_vgqql")
+debug_color = Color(0.610888, 0.538672, 0, 0.42)
+
+[connection signal="area_entered" from="BulletCollision" to="." method="_on_bullet_collision_area_entered"]

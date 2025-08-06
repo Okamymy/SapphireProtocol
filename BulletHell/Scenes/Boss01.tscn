@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0ggke8omxw45"]
+
+[ext_resource type="Script" uid="uid://bydd0e3akya0o" path="res://BulletHell/Scripts/boss_01.gd" id="1_d7eob"]
+[ext_resource type="Texture2D" uid="uid://dfdftsl6treci" path="res://BulletHell/Sprites/Boss01v2.png" id="1_ucmk4"]
+[ext_resource type="PackedScene" uid="uid://bp2s1lvyeqdl7" path="res://BulletHell/Scenes/BulletEnemy.tscn" id="2_vgdwq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7eob"]
+atlas = ExtResource("1_ucmk4")
+region = Rect2(0, 0, 174, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgdwq"]
+atlas = ExtResource("1_ucmk4")
+region = Rect2(174, 0, 174, 114)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bel1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7eob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgdwq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8swf"]
+size = Vector2(50, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ktv"]
+size = Vector2(50, 20)
+
+[node name="Boss01" type="Node2D"]
+script = ExtResource("1_d7eob")
+life = 7500
+bullet_scene = ExtResource("2_vgdwq")
+move_distant = 75
+move_speed = 30
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bel1u")
+frame_progress = 0.347105
+
+[node name="FirePoint" type="Marker2D" parent="."]
+position = Vector2(0, 37)
+
+[node name="Claws" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 3
+
+[node name="CS_ClawLeft" type="CollisionShape2D" parent="Claws"]
+position = Vector2(-47, 45)
+shape = SubResource("RectangleShape2D_n8swf")
+
+[node name="CS_ClawRight" type="CollisionShape2D" parent="Claws"]
+position = Vector2(47, 44.5)
+shape = SubResource("RectangleShape2D_n8swf")
+
+[node name="Body" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 3
+
+[node name="CS_Head" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_w6ktv")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="SpiralTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="area_entered" from="Claws" to="." method="_on_claws_area_entered"]
+[connection signal="area_entered" from="Body" to="." method="_on_body_area_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="SpiralTimer" to="." method="_on_spiral_timer_timeout"]
